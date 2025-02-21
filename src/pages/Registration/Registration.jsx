@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+
 
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../Providers/AuthProvider';
+import { AuthContext } from '../../Providers/AuthProviders';
+import SocialLogin from '../Shared/Social/SocialLogin';
+
 
 const Registration = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -94,7 +96,7 @@ const Registration = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-pink-800 text-yellow-500 " type="submit" value="Sign Up" />
+                                <input className="btn bg-pink-800 text-yellow-600 " type="submit" value="Sign Up" />
 
                             </div>
                             <SocialLogin></SocialLogin>
@@ -102,7 +104,7 @@ const Registration = () => {
                         
                         <p>
                             <small>
-                                Already have an Account? <Link to="/login" className='text-yellow-500'>Login</Link>
+                                Already have an Account? <Link to="/login" className='text-red-600'>Login</Link>
                             </small>
                         </p>
                     </div>

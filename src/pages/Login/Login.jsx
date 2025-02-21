@@ -3,12 +3,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 import { ToastContainer } from 'react-toastify';
-import login from '../../assets/lottie/login.json'
 
-import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+
+
 
 import Lottie from 'lottie-react';
-import { AuthContext } from '../../Providers/AuthProvider';
+
+import SocialLogin from '../Shared/Social/SocialLogin';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 
 
@@ -44,9 +46,7 @@ const Login = () => {
     return (
         <div className="hero bg-base-200 min-h-screen p-8">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left w-96">
-                    <Lottie animationData={login}></Lottie>
-                </div>
+                
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl p-8">
                     <h1 className=" ml-8 mt-2 text-5xl font-bold">Login now!</h1>
                     <form onSubmit={handleSignIn} className="card-body">
@@ -66,8 +66,8 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-pink-800 text-yellow-500">Login</button>
-                            <p>Don't have an account? <Link className='text-yellow-500' to='/register'>Register</Link></p>
+                            <button className="btn bg-green-800 text-yellow-500">Login</button>
+                            <p>Don't have an account? <Link className='text-red-500' to='/register'>Register</Link></p>
                         </div>
                     </form>
                     <SocialLogin></SocialLogin>

@@ -1,29 +1,30 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { AuthContext } from '../../../Providers/AuthProvider';
-// import useAdmin from '../../../Hooks/useAdmin';
+import { AuthContext } from '../../../Providers/AuthProviders';
+
+
 
 const Navbar = () => {
-    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     // const [isAdmin] = useAdmin()
-    // const handleLogout = () => {
-    //     logOut()
-    //         .then(() => { })
-    //         .catch(error => console.log(error))
-    // }
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     const navOptions = <>
 
-        <li> <Link to={'/'} className="text-red-400 hover:text-black">Home</Link></li>
-        <li><Link className="text-red-400 hover:text-black">Add Task</Link></li>
-        
-        
+        <li> <Link to={'/'} className="text-yellow-600 hover:text-black">Home</Link></li>
+        <li><Link className="text-yellow-600 hover:text-black">Add Task</Link></li>
+
+
 
         {/* {
             user && isAdmin && <>
-            <li><Link to='/dashboard/adminDashboard' className="text-red-400 hover:text-black">Dashboard</Link> </li> <li><Link to={'/adminreview'} className='text-red-400 hover:text-black'>User Complain</Link></li></>
+            <li><Link to='/dashboard/adminDashboard' className="text-yellow-600 hover:text-black">Dashboard</Link> </li> <li><Link to={'/adminreview'} className='text-yellow-600 hover:text-black'>User Complain</Link></li></>
         }
         {
-            user && !isAdmin && <><li><Link to='/dashboard/user' className="text-red-400 hover:text-black">Dashboard</Link></li><li><Link to={'/addreview'} className='text-red-400 hover:text-black'>Share Your Experience</Link></li></>
+            user && !isAdmin && <><li><Link to='/dashboard/user' className="text-yellow-600 hover:text-black">Dashboard</Link></li><li><Link to={'/addreview'} className='text-yellow-600 hover:text-black'>Share Your Experience</Link></li></>
         } */}
     </>
     return (
@@ -51,15 +52,29 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="text-2xl text-red-400 font-bold">Task Manager</a>
+                    <a className="text-2xl text-yellow-600 font-bold">Task Manager</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navOptions}
                     </ul>
                 </div>
-                {/* eikhane jinish ase add kra lagbe  */}
-                
+                <div className="navbar-end flex items-center space-x-4">
+                    {
+                        user ? (
+                            <>
+                                <span className="text-yellow-500">{user?.displayName}</span>
+                                <button onClick={handleLogout} className="btn btn-ghost border-yellow-500 bg-green-800 text-yellow-500 hover:bg-yellow-600">Logout</button>
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to='/login' className="btn btn-ghost text-yellow-600 hover:text-black">Login</Link></li>
+                                <li><Link to='/register' className="btn btn-ghost text-yellow-600 hover:text-black">Register</Link></li>
+                            </>
+                        )
+                    }
+                </div>
+
             </div>
         </>
     );
