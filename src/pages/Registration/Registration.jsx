@@ -96,7 +96,7 @@ const Registration = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-pink-800 text-yellow-600 " type="submit" value="Sign Up" />
+                                <input className="btn bg-green-800 text-yellow-600 " type="submit" value="Sign Up" />
 
                             </div>
                             <SocialLogin></SocialLogin>

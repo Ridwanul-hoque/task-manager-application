@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProviders';
+
 
 const AddTask = () => {
+    const { user } = useContext(AuthContext); 
+    
     const [task, setTask] = useState({
         title: '',
         description: '',
-        category: 'To-Do'
+        category: 'To-Do',
+        email: user?.email || '' // Store user email
     });
 
     const handleChange = (e) => {
@@ -47,7 +52,7 @@ const AddTask = () => {
 
         if (res.ok) {
             toast.success("Task added successfully!");
-            setTask({ title: '', description: '', category: 'To-Do' });
+            setTask({ title: '', description: '', category: 'To-Do', email: user?.email || '' });
             Swal.fire({
                 title: "Success!",
                 text: "Your task has been added successfully!",
@@ -98,6 +103,16 @@ const AddTask = () => {
                         <option value="In Progress">In Progress</option>
                         <option value="Done">Done</option>
                     </select>
+                </div>
+                <div>
+                    <label className="block text-yellow-600 font-semibold mb-1">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={task.email}
+                        readOnly
+                        className="w-full p-3 border rounded-lg bg-gray-200 cursor-not-allowed"
+                    />
                 </div>
                 <button
                     type="submit"

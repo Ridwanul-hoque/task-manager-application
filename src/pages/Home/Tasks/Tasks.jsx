@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
+    const { user } = useContext(AuthContext); // Get the logged-in user
 
     useEffect(() => {
-        fetchTasks();
-    }, []);
+        if (user?.email) {
+            fetchTasks(user.email);
+        }
+    }, [user]);
 
-    const fetchTasks = async () => {
-        const res = await fetch("http://localhost:5000/tasks");
+    const fetchTasks = async (email) => {
+        const res = await fetch(`http://localhost:5000/tasks?email=${email}`);
         const data = await res.json();
         setTasks(data);
     };
@@ -93,7 +97,7 @@ const Tasks = () => {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4 h-[90vh] bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+            <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4 h-[90vh] ">
                 {["To-Do", "In Progress", "Done"].map((category) => (
                     <TaskColumn
                         key={category}

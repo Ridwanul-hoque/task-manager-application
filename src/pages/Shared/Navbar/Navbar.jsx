@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProviders';
+import large from '../../../assets/task-large.png'
 
 
 
@@ -16,6 +17,7 @@ const Navbar = () => {
 
         <li> <Link to={'/'} className="text-yellow-600 hover:text-black">Home</Link></li>
         <li><Link to={'/AddTasks'} className="text-yellow-600 hover:text-black">Add Task</Link></li>
+        <li><Link to={'/profile'} className="text-yellow-600 hover:text-black">Profile Page</Link></li>
 
 
 
@@ -52,6 +54,7 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
+                    <img src={large} alt="" />
                     <a className="text-2xl text-yellow-600 font-bold">Task Manager</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
