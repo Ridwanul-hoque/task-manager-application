@@ -40,7 +40,7 @@ const AddTask = () => {
             timestamp: new Date().toISOString()
         };
 
-        const res = await fetch('http://localhost:5000/tasks', {
+        const res = await fetch('https://task-manager-application-server.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

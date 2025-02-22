@@ -16,7 +16,7 @@ const Tasks = () => {
     }, [user]);
 
     const fetchTasks = async (email) => {
-        const res = await fetch(`http://localhost:5000/tasks?email=${email}`);
+        const res = await fetch(`https://task-manager-application-server.vercel.app/tasks?email=${email}`);
         const data = await res.json();
         setTasks(data);
     };
@@ -37,7 +37,7 @@ const Tasks = () => {
 
         setTasks(updatedTasks);
 
-        await fetch(`http://localhost:5000/tasks/${task._id}`, {
+        await fetch(`https://task-manager-application-server.vercel.app/tasks/${task._id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...task, category: newCategory }),
@@ -60,7 +60,7 @@ const Tasks = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 const updatedTask = { ...task, title: result.value.newTitle, description: result.value.newDescription };
-                fetch(`http://localhost:5000/tasks/${task._id}`, {
+                fetch(`https://task-manager-application-server.vercel.app/tasks/${task._id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(updatedTask),
@@ -85,7 +85,7 @@ const Tasks = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" }).then((res) => {
+                fetch(`https://task-manager-application-server.vercel.app/tasks/${id}`, { method: "DELETE" }).then((res) => {
                     if (res.ok) {
                         setTasks(tasks.filter((t) => t._id !== id));
                         toast.success("Task deleted!");

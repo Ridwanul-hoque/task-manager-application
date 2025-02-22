@@ -13,7 +13,7 @@ const Profile = () => {
             if (!user?.email) return;
     
             try {
-                const response = await fetch(`http://localhost:5000/users?email=${user.email}`); // Fetch user by email
+                const response = await fetch(`https://task-manager-application-server.vercel.app/users?email=${user.email}`); // Fetch user by email
                 const data = await response.json();
     
                 if (data.length > 0) {
@@ -31,7 +31,7 @@ const Profile = () => {
         
     
         try {
-            const response = await fetch(`http://localhost:5000/users/${dbUser._id}`, {  
+            const response = await fetch(`https://task-manager-application-server.vercel.app/users/${dbUser._id}`, {  
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, photoURL: image })  
