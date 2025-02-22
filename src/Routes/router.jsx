@@ -6,6 +6,7 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import AddTask from "../pages/AddTask/AddTask";
 
 
 export const router = createBrowserRouter([
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Registration></Registration>
+            },
+            {
+                path: 'AddTasks',
+                element: <AddTask></AddTask>
             },
         ]
     },

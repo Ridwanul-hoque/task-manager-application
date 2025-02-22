@@ -15,7 +15,7 @@ const Navbar = () => {
     const navOptions = <>
 
         <li> <Link to={'/'} className="text-yellow-600 hover:text-black">Home</Link></li>
-        <li><Link className="text-yellow-600 hover:text-black">Add Task</Link></li>
+        <li><Link to={'/AddTasks'} className="text-yellow-600 hover:text-black">Add Task</Link></li>
 
 
 
